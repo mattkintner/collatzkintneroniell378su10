@@ -13,7 +13,7 @@
 #include <cmath> // math
 
 
-int countCycles(int,int);
+int countCycles(unsigned long, int);
 
 // ------------
 // collatz_read
@@ -80,7 +80,7 @@ int collatz_eval (int i, int j) {
   * @return the cycle length for given n
   */
   
-int countCycles(int n, int counter){
+int countCycles(unsigned long n, int counter){
 		assert(n > 0);		
 		//n is 1
 		if(n == 1){
