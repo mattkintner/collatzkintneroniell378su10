@@ -10,6 +10,10 @@
 
 #include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
+#include <cmath> // math
+
+
+int countCycles(int,int);
 
 // ------------
 // collatz_read
@@ -43,10 +47,58 @@ bool collatz_read (std::istream& r, int& i, int& j) {
 int collatz_eval (int i, int j) {
     assert(i > 0);
     assert(j > 0);
-    // <your code>
-    int v = 1;
+     int begin = -1;
+     if(i < j){
+        begin = i;
+     }
+     else{
+        begin = j;
+     }
+     assert(begin != -1);
+
+     int range = abs(i - j);
+     int end = begin + range;
+
+     int v = 0;
+	  for(int k = begin; k <= end; k++){
+			int temp = countCycles(k , 1);
+			//int temp = countCycles2(k);
+			if(v < temp){
+				v = temp;
+			}
+		}
     assert(v > 0);
     return v;}
+
+ // ----
+ // countCycles
+ // ----
+
+ /**
+  * @param  n the number being subjected for 3n+1 algorithm
+  * @param  counter the number that keeps track of the cycle length for n
+  * @return the cycle length for given n
+  */
+  
+int countCycles(int n, int counter){
+		assert(n > 0);		
+		//n is 1
+		if(n == 1){
+			return counter;
+		}
+		//n is odd
+		else if(n % 2 == 1){
+			n = n + (n >> 1) + 1;
+			counter += 2;
+			return countCycles(n, counter);
+			//return countCycles(3*n + 1, ++counter);
+		}
+		//n is even
+		else{
+			return countCycles(n/2, ++counter);
+		}
+	}
+
 
 // -------------
 // collatz_print
