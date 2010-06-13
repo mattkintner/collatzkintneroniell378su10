@@ -1,0 +1,52 @@
+==2072== Memcheck, a memory error detector.
+==2072== Copyright (C) 2002-2008, and GNU GPL'd, by Julian Seward et al.
+==2072== Using LibVEX rev 1878, a library for dynamic binary translation.
+==2072== Copyright (C) 2004-2008, and GNU GPL'd, by OpenWorks LLP.
+==2072== Using valgrind-3.4.0, a dynamic binary instrumentation framework.
+==2072== Copyright (C) 2000-2008, and GNU GPL'd, by Julian Seward et al.
+==2072== For more details, rerun with: -v
+==2072==
+TestCollatz.c++
+..F.F.F.F.
+
+
+!!!FAILURES!!!
+Test Results:
+Run:  6   Failures: 4   Errors: 0
+
+
+1) test: TestCollatz::test_eval_1 (F) line: 52 TestCollatz.c++
+assertion failed
+- Expression: v == 20
+
+
+2) test: TestCollatz::test_eval_2 (F) line: 56 TestCollatz.c++
+assertion failed
+- Expression: v == 125
+
+
+3) test: TestCollatz::test_eval_3 (F) line: 60 TestCollatz.c++
+assertion failed
+- Expression: v == 89
+
+
+4) test: TestCollatz::test_eval_4 (F) line: 64 TestCollatz.c++
+assertion failed
+- Expression: v == 174
+
+
+Done.
+==2072==
+==2072== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 21 from 1)
+==2072== malloc/free: in use at exit: 122,880 bytes in 6 blocks.
+==2072== malloc/free: 345 allocs, 339 frees, 162,814 bytes allocated.
+==2072== For counts of detected errors, rerun with: -v
+==2072== searching for pointers to 6 not-freed blocks.
+==2072== checked 124,836 bytes.
+==2072==
+==2072== LEAK SUMMARY:
+==2072==    definitely lost: 0 bytes in 0 blocks.
+==2072==      possibly lost: 0 bytes in 0 blocks.
+==2072==    still reachable: 122,880 bytes in 6 blocks.
+==2072==         suppressed: 0 bytes in 0 blocks.
+==2072== Rerun with --leak-check=full to see details of leaked memory.
